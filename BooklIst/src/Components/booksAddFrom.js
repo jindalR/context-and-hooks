@@ -10,13 +10,15 @@ const AddBookForm = (props) => {
     }
    const  handleSubmit = (e) => {
        e.preventDefault();
-      addBooks(title);
+       if (title) {
+        addBooks(title);
         setTitle("");
+       } 
     }
     return ( <form onSubmit={handleSubmit}>
         <label>Add New Book</label>
         <input type="text" placeholder="Books Title" value={title} onChange={handleadd}></input>
-        <input type="submit" value="Add" />    </form> );
+        <input type="submit"  disabled = {title ? false : true} value="Add" />    </form> );
 }
  
 export default AddBookForm;
